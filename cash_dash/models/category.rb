@@ -20,8 +20,15 @@ class Category
     @id = results.first['id'].to_i
   end
 
+  def self.all()
+    sql = "SELECT * FROM categories;"
+    categories = SqlRunner.run ( sql )
+    return categories.map { |category| Category.new( category ) }
+  end
+
   def self.delete_all()
     sql = "DELETE FROM categories;"
+    SqlRunner.run( sql )
   end
 
 end
