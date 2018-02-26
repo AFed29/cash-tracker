@@ -53,15 +53,11 @@ class Transaction
     SqlRunner.run( sql )
   end
 
-  def self.amount_pounds_to_display(amount)
+  def self.display_pounds_pence(amount)
     pounds = amount/100
-    return pounds
-  end
-
-  def self.amount_pence_to_display(amount)
-    pence = amount - (amount_pounds_to_display(amount) * 100)
-    result = pence.to_s.rjust(2, "0")
-    return result
+    pence = amount - (pounds*100)
+    pence = pence.to_s.rjust(2, "0")
+    return "£#{pounds}.#{pence}"
   end
 
   def self.total_spent()

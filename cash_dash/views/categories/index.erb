@@ -7,9 +7,8 @@
     <tr>
       <td><%= category.name %></td>
       <% total = category.total_amount_spent %>
-      <% pounds = Transaction.amount_pounds_to_display(total) %>
-      <% pence = Transaction.amount_pence_to_display(total) %>
-      <td>£<%= pounds %>.<%= pence %></td>
+      <% pretty_total = Transaction.display_pounds_pence(total) %>
+      <td><%= pretty_total %></td>
     </tr>
   <% end %>
 </table>
