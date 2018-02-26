@@ -8,13 +8,14 @@
     <% @merchants.each do |merchant| %>
       <tr>
         <td><%= merchant.name %></td>
+        <td><a href="/merchants/<%= merchant.id %>/edit">Edit Merchant</a></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <form method="post" action="/merchants">
-  <label for="new-merchant">Enter a new Merchant</label>
+  <label for="new-merchant">Enter a new Merchant:</label>
   <input id="new-merchant" type="text" name="name">
   <input type="submit" value="Add new merchant">
 </form>

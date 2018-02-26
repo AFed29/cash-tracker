@@ -1,0 +1,5 @@
+<form method="post" action="/merchants/<%= @merchant.id %>">
+  <label for="merchant">Enter a new name for the Merchant:</label>
+  <input id="merchant" type="text" name="name" value="<%= @merchant.name %>">
+  <input type="submit" value="Update merchant">
+</form>
