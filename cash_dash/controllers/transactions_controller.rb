@@ -9,6 +9,7 @@ get '/transactions' do
   erb( :"transactions/index" )
 end
 
+
 get '/transactions/new' do
   @merchants = Merchant.all()
   @categories = Category.all()
@@ -21,9 +22,25 @@ get '/transactions/total' do
   erb( :"transactions/total_spent")
 end
 
+get '/transactions/:id/edit' do
+  @merchants = Merchant.all()
+  @categories = Category.all()
+  @transaction = Transaction.find_by_id( params['id'] )
+  @pretty_total = Transaction.display_pounds_pence( @transaction.amount.to_i )
+  @pretty_total[0] = ""
+  erb( :"transactions/edit")
+end
+
 post '/transactions' do
-  params[:amount] = (params[:amount].to_f*100).to_i
+  params['amount'] = (params['amount'].to_f*100).to_i
   transaction = Transaction.new(params)
   transaction.save()
+  redirect to("/transactions")
+end
+
+post '/transactions/:id' do
+  params['amount'] = (params['amount'].to_f*100).to_i
+  transaction = Transaction.new(params)
+  transaction.update()
   redirect to("/transactions")
 end

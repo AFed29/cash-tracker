@@ -26,6 +26,22 @@ class Transaction
     @id = results.first['id'].to_i
   end
 
+  def update()
+    sql = "UPDATE transactions
+          SET
+          (
+            amount,
+            category_id,
+            merchant_id
+          ) =
+          (
+            $1, $2, $3
+          )
+          WHERE id = $4;"
+    values = [@amount, @category_id, @merchant_id, @id]
+    SqlRunner.run( sql, values )
+  end
+
   def category()
     sql = "SELECT * FROM categories
     WHERE id = $1;"
@@ -51,6 +67,14 @@ class Transaction
   def self.delete_all()
     sql = "DELETE FROM transactions;"
     SqlRunner.run( sql )
+  end
+
+  def self.find_by_id(id)
+    sql = "SELECT * FROM transactions
+          WHERE id = $1;"
+    values = [id]
+    transaction_hash = SqlRunner.run( sql, values ).first()
+    return Transaction.new(transaction_hash)
   end
 
   def self.display_pounds_pence(amount)

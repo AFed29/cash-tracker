@@ -10,6 +10,11 @@
       <td><%= transaction.merchant().name %></td>
       <td><%= transaction.category().name %></td>
       <td><%= Transaction.display_pounds_pence(transaction.amount.to_i) %></td>
+      <td>
+        <form method="get" action="/transactions/<%= transaction.id %>/edit">
+          <input type="submit" value="Edit Transaction">
+        </form>
+      </td>
     </tr>
   <% end %>
 </table>
