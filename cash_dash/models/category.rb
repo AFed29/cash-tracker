@@ -20,14 +20,14 @@ class Category
     @id = results.first['id'].to_i
   end
 
-  def transactions()
-    sql = "SELECT * FROM transactions
+  def total_amount_spent()
+    sql = "SELECT SUM(amount)
+          FROM transactions
           WHERE category_id = $1;"
     values = [@id]
-    transactions_hash = SqlRunner.run( sql, values )
-    transactions = transactions_hash.map { |transaction_hash|
-      Transaction.new( transaction_hash )}
-    return transactions
+    hash = SqlRunner.run( sql, values ).first
+    total = hash['sum']
+    return total.to_i
   end
 
   def self.all()

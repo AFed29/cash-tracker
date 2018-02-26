@@ -6,7 +6,7 @@
   <% @categories.each do |category| %>
     <tr>
       <td><%= category.name %></td>
-      <% total = Transaction.total_in_pence(category.transactions) %>
+      <% total = category.total_amount_spent %>
       <% pounds = Transaction.amount_pounds_to_display(total) %>
       <% pence = Transaction.amount_pence_to_display(total) %>
       <td>£<%= pounds %>.<%= pence %></td>

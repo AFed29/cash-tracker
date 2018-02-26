@@ -16,8 +16,9 @@ get '/transactions/new' do
 end
 
 get '/transactions/total' do
-  @total_pounds = Transaction.total_spent_display_pounds()
-  @total_pence = Transaction.total_spent_display_pence()
+  total = Transaction.total_spent()
+  @total_pounds = Transaction.amount_pounds_to_display(total)
+  @total_pence = Transaction.amount_pence_to_display(total)
   erb( :"transactions/total_spent")
 end
 
