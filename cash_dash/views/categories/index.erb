@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Total Spent</th>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.name %></td>
+      <% total = Transaction.total_in_pence(category.transactions) %>
+      <% pounds = Transaction.amount_pounds_to_display(total) %>
+      <% pence = Transaction.amount_pence_to_display(total) %>
+      <td>£<%= pounds %>.<%= pence %></td>
+    </tr>
+  <% end %>
+</table>

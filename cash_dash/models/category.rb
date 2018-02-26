@@ -20,6 +20,16 @@ class Category
     @id = results.first['id'].to_i
   end
 
+  def transactions()
+    sql = "SELECT * FROM transactions
+          WHERE category_id = $1;"
+    values = [@id]
+    transactions_hash = SqlRunner.run( sql, values )
+    transactions = transactions_hash.map { |transaction_hash|
+      Transaction.new( transaction_hash )}
+    return transactions
+  end
+
   def self.all()
     sql = "SELECT * FROM categories;"
     categories = SqlRunner.run ( sql )

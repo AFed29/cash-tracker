@@ -64,6 +64,23 @@ def self.delete_all()
   SqlRunner.run( sql )
 end
 
+def self.total_in_pence(transactions)
+  pence = 0
+  transactions.each { |transaction| pence += transaction.amount()}
+  return pence.to_i
+end
+
+def self.amount_pounds_to_display(amount)
+  pounds = amount/100
+  return pounds
+end
+
+def self.amount_pence_to_display(amount)
+  pence = amount - (amount_pounds_to_display(amount) * 100)
+  result = pence.to_s.rjust(2, "0")
+  return result
+end
+
 def self.total_spent_display_pounds()
   total = 0
   sql = "SELECT * FROM transactions;"
