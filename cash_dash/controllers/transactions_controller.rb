@@ -15,6 +15,12 @@ get '/transactions/new' do
   erb( :"transactions/new" )
 end
 
+get '/transactions/total' do
+  @total_pounds = Transaction.total_spent_display_pounds()
+  @total_pence = Transaction.total_spent_display_pence()
+  erb( :"transactions/total_spent")
+end
+
 post '/transactions' do
   params[:amount] = (params[:amount].to_f*100).to_i
   transaction = Transaction.new(params)
