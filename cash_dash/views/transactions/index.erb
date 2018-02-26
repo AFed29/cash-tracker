@@ -1,11 +1,14 @@
 <a href="/transactions/total">Total spent</a>
 <table>
-  <tr>
-    <th>Merchant</th>
-    <th>Category</th>
-    <th>Amount</th>
-  </tr>
-  <% @transactions.each do |transaction| %>
+  <thead>
+    <tr>
+      <th>Merchant</th>
+      <th>Category</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |transaction| %>
     <tr>
       <td><%= transaction.merchant().name %></td>
       <td><%= transaction.category().name %></td>
@@ -19,5 +22,6 @@
         </form>
       </td>
     </tr>
-  <% end %>
+    <% end %>
+  </tbody>
 </table>

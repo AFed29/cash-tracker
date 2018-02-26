@@ -1,14 +1,18 @@
 <table>
-  <tr>
-    <th>Category</th>
-    <th>Total Spent</th>
-  </tr>
-  <% @categories.each do |category| %>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Total Spent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
     <tr>
       <td><%= category.name %></td>
       <% total = category.total_amount_spent %>
       <% pretty_total = Transaction.display_pounds_pence(total) %>
       <td><%= pretty_total %></td>
     </tr>
-  <% end %>
+    <% end %>
+  </tbody>
 </table>
