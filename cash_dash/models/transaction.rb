@@ -26,15 +26,19 @@ def save()
   @id = results.first['id'].to_i
 end
 
-def amount_pounds()
+def amount_pounds_to_display()
   pounds = @amount/100
   return pounds
 end
 
-def amount_pence()
-  pence = @amount - (amount_pounds * 100)
+def amount_pence_to_display()
+  pence = @amount - (amount_pounds_to_display * 100)
   result = pence.to_s.rjust(2, "0")
   return result
+end
+
+def amount_pounds_and_pence_to_pence()
+
 end
 
 def category()
