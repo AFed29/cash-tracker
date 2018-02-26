@@ -9,8 +9,8 @@
     <tr>
       <td><%= transaction.merchant().name %></td>
       <td><%= transaction.category().name %></td>
-      <td>£<%= transaction.amount_pounds_to_display() %>.
-      <%= transaction.amount_pence_to_display() %></td>
+      <td>£<%= Transaction.amount_pounds_to_display(transaction.amount) %>.
+      <%= Transaction.amount_pence_to_display(transaction.amount) %></td>
     </tr>
   <% end %>
 </table>

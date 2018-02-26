@@ -26,17 +26,6 @@ class Transaction
     @id = results.first['id'].to_i
   end
 
-  def amount_pounds_to_display()
-    pounds = @amount/100
-    return pounds
-  end
-
-  def amount_pence_to_display()
-    pence = @amount - (amount_pounds_to_display * 100)
-    result = pence.to_s.rjust(2, "0")
-    return result
-  end
-
   def category()
     sql = "SELECT * FROM categories
     WHERE id = $1;"
@@ -81,5 +70,4 @@ class Transaction
     total = SqlRunner.run( sql )
     return total
   end
-
 end
