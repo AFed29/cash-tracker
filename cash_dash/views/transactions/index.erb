@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Merchant</th>
+    <th>Category</th>
+    <th>Amount</th>
+  </tr>
+  <% @transactions.each do |transaction| %>
+    <tr>
+      <td><%= transaction.merchant().name %></td>
+      <td><%= transaction.category().name %></td>
+      <td>£<%= transaction.amount_pounds() %>.<%= transaction.amount_pence() %></td>
+    </tr>
+  <% end %>
+</table>

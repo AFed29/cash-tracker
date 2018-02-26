@@ -26,6 +26,17 @@ def save()
   @id = results.first['id'].to_i
 end
 
+def amount_pounds()
+  pounds = @amount/100
+  return pounds
+end
+
+def amount_pence()
+  pence = @amount - (amount_pounds * 100)
+  result = pence.to_s.rjust(2, "0")
+  return result
+end
+
 def category()
   sql = "SELECT * FROM categories
         WHERE id = $1;"

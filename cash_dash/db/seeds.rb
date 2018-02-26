@@ -43,6 +43,21 @@ transaction1 = Transaction.new({
   "merchant_id" => merchant1.id(),
   "category_id" => category3.id()
 })
+transaction1.save()
+
+transaction2 = Transaction.new({
+  "amount" => 1205,
+  "merchant_id" => merchant2.id(),
+  "category_id" => category1.id()
+})
+transaction2.save()
+
+transaction2 = Transaction.new({
+  "amount" => 420,
+  "merchant_id" => merchant2.id(),
+  "category_id" => category1.id()
+})
+transaction2.save()
 
   binding.pry
 
