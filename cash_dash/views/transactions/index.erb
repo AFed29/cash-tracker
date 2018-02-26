@@ -11,8 +11,11 @@
       <td><%= transaction.category().name %></td>
       <td><%= Transaction.display_pounds_pence(transaction.amount.to_i) %></td>
       <td>
-        <form method="get" action="/transactions/<%= transaction.id %>/edit">
-          <input type="submit" value="Edit Transaction">
+        <a href="/transactions/<%= transaction.id %>/edit">Edit Transaction</a>
+      </td>
+      <td>
+        <form method="post" action="/transactions/<%= transaction.id %>/delete">
+          <input type="submit" value="Delete Transaction">
         </form>
       </td>
     </tr>

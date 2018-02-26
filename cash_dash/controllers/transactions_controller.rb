@@ -38,6 +38,12 @@ post '/transactions' do
   redirect to("/transactions")
 end
 
+post '/transactions/:id/delete' do
+  transaction = Transaction.find_by_id( params['id'] )
+  transaction.delete()
+  redirect to("/transactions")
+end
+
 post '/transactions/:id' do
   params['amount'] = (params['amount'].to_f*100).to_i
   transaction = Transaction.new(params)
