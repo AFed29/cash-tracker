@@ -6,10 +6,15 @@
   </thead>
   <tbody>
     <% @merchants.each do |merchant| %>
-      <tr>
-        <td><%= merchant.name %></td>
-        <td><a href="/merchants/<%= merchant.id %>/edit">Edit Merchant</a></td>
-      </tr>
+    <tr>
+      <td><%= merchant.name %></td>
+      <td><a href="/merchants/<%= merchant.id %>/edit">Edit Merchant</a></td>
+      <td>
+        <form method="post" action="/merchants/<%= merchant.id %>/delete">
+          <input type="submit" value="Delete Merchant">
+        </form>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
