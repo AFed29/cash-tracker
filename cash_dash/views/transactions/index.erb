@@ -1,4 +1,4 @@
-<a href="/transactions/total">Total spent</a>
+<h2>All Transactions</h2>
 <table>
   <thead>
     <tr>
@@ -13,10 +13,10 @@
       <td><%= transaction.merchant().name %></td>
       <td><%= transaction.category().name %></td>
       <td><%= Transaction.display_pounds_pence(transaction.amount.to_i) %></td>
-      <td>
+      <td class="edit-delete">
         <a href="/transactions/<%= transaction.id %>/edit">Edit Transaction</a>
       </td>
-      <td>
+      <td class="edit-delete">
         <form method="post" action="/transactions/<%= transaction.id %>/delete">
           <input type="submit" value="Delete Transaction">
         </form>
@@ -25,3 +25,4 @@
     <% end %>
   </tbody>
 </table>
+<h3><a href="/transactions/total">Total spent</a></h3>
