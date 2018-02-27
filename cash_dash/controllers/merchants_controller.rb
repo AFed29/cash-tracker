@@ -12,6 +12,11 @@ get '/merchants/:id/edit' do
   erb( :"/merchants/edit")
 end
 
+get '/merchants/:id/delete/error' do
+  @merchant = Merchant.find_by_id( params['id'] )
+  erb( :"/merchants/delete_error")
+end
+
 post '/merchants' do
   merchant = Merchant.new( params )
   merchant.save()
@@ -25,7 +30,11 @@ post '/merchants/:id' do
 end
 
 post '/merchants/:id/delete' do
-  merchant = Merchant.find_by_id( params['id'] )
-  merchant.delete()
-  redirect to("/merchants")
+  if Merchant.check_if_exists_in_transaction( params['id'] )
+    redirect to("/merchants/#{params['id']}/delete/error")
+  else
+    merchant = Merchant.find_by_id( params['id'] )
+    merchant.delete()
+    redirect to("/merchants")
+  end
 end
