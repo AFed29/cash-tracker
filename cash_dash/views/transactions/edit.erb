@@ -1,4 +1,6 @@
 <form method="post" action="/transactions/<%= @transaction.id %>">
+  <label for="transaction-date">Date of transaction:</label>
+  <input type="date" name="transaction_date" value="<%= @transaction.transaction_date() %>">  
   <label for="merchant-id">Select a merchant:</label>
     <select id="merchant-id" name="merchant_id">
       <% @merchants.each do |merchant| %>

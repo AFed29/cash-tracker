@@ -10,6 +10,7 @@
   <tbody>
     <% @transactions.each do |transaction| %>
     <tr>
+      <td><%= transaction.transaction_date() %></td>
       <td><%= transaction.merchant().name %></td>
       <td><%= transaction.category().name %></td>
       <td><%= Transaction.display_pounds_pence(transaction.amount.to_i) %></td>

@@ -1,17 +1,19 @@
 <form method="post" action="/transactions">
-  <label for="merchant-id">Select a merchant:</label>
+  <label for="transaction-date">Date of transaction:</label>
+  <input type="date" name="transaction_date">
+  <label for="merchant-id">Merchant:</label>
   <select id="merchant-id" name="merchant_id">
     <% @merchants.each do |merchant| %>
     <option value="<%= merchant.id %>"><%= merchant.name %></option>
     <% end %>
   </select>
-  <label for="category-id">Select a category:</label>
+  <label for="category-id">Category:</label>
   <select id="category-id" name="category_id">
     <% @categories.each do |category| %>
     <option value="<%= category.id %>"><%= category.name %></option>
     <% end %>
   </select>
-  <label for="amount">Enter Amount: £</label>
+  <label for="amount">Amount: £</label>
   <input id="amount" type="number" name="amount" step="0.01">
   <input type="submit" value="Add this Transaction">
 </form>

@@ -39,6 +39,7 @@ merchant2 = Merchant.new({
 merchant2.save()
 
 transaction1 = Transaction.new({
+  "transaction_date" => "2018/02/25",
   "amount" => 600,
   "merchant_id" => merchant1.id(),
   "category_id" => category3.id()
@@ -46,19 +47,21 @@ transaction1 = Transaction.new({
 transaction1.save()
 
 transaction2 = Transaction.new({
+  "transaction_date" => "2017/12/10",
   "amount" => 1205,
   "merchant_id" => merchant2.id(),
   "category_id" => category1.id()
 })
 transaction2.save()
 
-transaction2 = Transaction.new({
+transaction3 = Transaction.new({
+  "transaction_date" => "2018/01/19",
   "amount" => 420,
   "merchant_id" => merchant2.id(),
   "category_id" => category1.id()
 })
-transaction2.save()
+transaction3.save()
 
-  binding.pry
-
-  nil
+  # binding.pry
+  #
+  # nil

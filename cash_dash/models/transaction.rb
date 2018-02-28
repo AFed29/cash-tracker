@@ -1,9 +1,12 @@
+require('date')
+
 class Transaction
 
-  attr_reader :id, :amount, :category_id, :merchant_id
+  attr_reader :id, :amount, :category_id, :merchant_id, :transaction_date
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
+    @transaction_date = Date.parse(options['transaction_date'])
     @amount = options['amount'].to_i
     @category_id = options['category_id'].to_i
     @merchant_id = options['merchant_id'].to_i
@@ -12,16 +15,17 @@ class Transaction
   def save()
     sql = "INSERT INTO transactions
     (
+      transaction_date,
       amount,
       category_id,
       merchant_id
     )
     VALUES
     (
-      $1, $2, $3
+      $1, $2, $3, $4
     )
     RETURNING *;"
-    values = [@amount, @category_id, @merchant_id]
+    values = [@transaction_date, @amount, @category_id, @merchant_id]
     results = SqlRunner.run( sql, values )
     @id = results.first['id'].to_i
   end
@@ -30,6 +34,7 @@ class Transaction
     sql = "UPDATE transactions
           SET
           (
+            transaction_date,
             amount,
             category_id,
             merchant_id
@@ -38,7 +43,7 @@ class Transaction
             $1, $2, $3
           )
           WHERE id = $4;"
-    values = [@amount, @category_id, @merchant_id, @id]
+    values = [@transaction_date, @amount, @category_id, @merchant_id, @id]
     SqlRunner.run( sql, values )
   end
 
@@ -66,7 +71,8 @@ class Transaction
   end
 
   def self.all()
-    sql = "SELECT * FROM transactions;"
+    sql = "SELECT * FROM transactions
+           ORDER BY transaction_date;"
     transactions = SqlRunner.run( sql )
     return transactions.map { |transaction| Transaction.new( transaction ) }
   end
