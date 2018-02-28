@@ -70,6 +70,13 @@ class Transaction
     return Merchant.new(merchant)
   end
 
+  def pretty_date()
+    day = @transaction_date.mday().to_s.rjust(2, "0")
+    month = @transaction_date.mon().to_s.rjust(2, "0")
+    year = @transaction_date.year()
+    return "#{day}/#{month}/#{year}"
+  end
+
   def self.all()
     sql = "SELECT * FROM transactions
            ORDER BY transaction_date;"
