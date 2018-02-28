@@ -1,4 +1,18 @@
 <h2>All Transactions</h2>
+<form class="" action="/transactions/month-year" method="post">
+  <select name="month">
+    <% count = 0 %>
+    <% @months.each do |month| %>
+      <option value="<%= count += 1 %>"><%= month %></option>
+    <% end %>
+  </select>
+  <select name="year">
+    <% @years.each do |year| %>
+      <option value="<%= year %>"><%= year %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Filter by month/year">
+</form>
 <table>
   <thead>
     <tr>
@@ -27,4 +41,4 @@
     <% end %>
   </tbody>
 </table>
-<h3><a href="/transactions/total">Total spent</a></h3>
+<h3>Total Spent: <%= @pretty_total %></h3>

@@ -104,6 +104,34 @@ class Transaction
     return "£#{pounds}.#{pence}"
   end
 
+  def self.return_years()
+    sql = "SELECT DISTINCT
+           date_part('year', transaction_date)
+           FROM transactions;"
+    years_hash = SqlRunner.run( sql )
+    years = years_hash.map { |year_hash| year_hash['date_part'] }
+    return years
+  end
+
+  def self.return_transactions_by_month(month, year)
+    sql = "SELECT * FROM transactions
+           WHERE date_part('month', transaction_date) = $1
+           AND date_part('year', transaction_date) = $2;"
+    values = [month, year]
+    transaction_hash = SqlRunner.run( sql, values )
+    return transaction_hash.map { |transaction_hash| Transaction.new(transaction_hash) }
+  end
+
+  def self.total_spent_month(month, year)
+    sql = "SELECT SUM(amount)
+           FROM transactions
+           WHERE date_part('month', transaction_date) = $1
+           AND date_part('year', transaction_date) = $2;"
+    values = [month, year]
+    total = SqlRunner.run( sql, values ).first()['sum']
+    return total.to_i
+  end
+
   def self.total_spent()
     sql = "SELECT SUM(amount)
            FROM transactions;"
