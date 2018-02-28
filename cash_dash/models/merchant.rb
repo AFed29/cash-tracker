@@ -54,6 +54,16 @@ class Merchant
     return Merchant.new( merchant_hash )
   end
 
+  def self.check_if_name_exists( name )
+    sql = "SELECT * FROM merchants
+           WHERE name = $1;"
+    values = [name]
+    merchants_hash = SqlRunner.run( sql, values )
+    merchants = merchants_hash.map { |merchant| Merchant.new(merchant) }
+    return true if merchants.count !=0
+    return false
+  end
+
   def self.check_if_exists_in_transaction( id )
     sql = "SELECT * FROM merchants
            WHERE id = $1

@@ -7,6 +7,10 @@ get '/merchants' do
   erb( :"/merchants/index" )
 end
 
+get '/merchants/error' do
+  erb( :"/merchants/new_error")
+end
+
 get '/merchants/:id/edit' do
   @merchant = Merchant.find_by_id( params['id'] )
   erb( :"/merchants/edit")
@@ -19,8 +23,12 @@ end
 
 post '/merchants' do
   merchant = Merchant.new( params )
-  merchant.save()
-  redirect to("/merchants")
+  if Merchant.check_if_name_exists( merchant.name() )
+    redirect to("/merchants/error")
+  else
+    merchant.save()
+    redirect to("/merchants")
+  end
 end
 
 post '/merchants/:id' do
