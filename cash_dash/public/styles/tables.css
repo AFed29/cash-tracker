@@ -1,21 +1,30 @@
 th,
 td {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
   border: 0.2rem solid #356568;
   color: #f4f4f4;
+  height: 1.5rem;
+}
+
+table.transactions {
+width: 80vw;
+margin: auto;
+overflow: auto;
+margin-top: 0.5em;
+margin-bottom: 0.5em;
 }
 
 table {
-width: 80vw;
+width: 40vw;
 margin: auto;
+overflow: auto;
+margin-top: 0.5em;
+margin-bottom: 0.5em;
 }
 
 thead {
   font-size: 1.8em;
   text-align: left;
-}
-
-td.edit-delete {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
 }

@@ -1,6 +1,6 @@
-<form method="post" action="/transactions">
+<form class="new-transaction" method="post" action="/transactions">
   <label for="transaction-date">Date of transaction:</label>
-  <input type="date" name="transaction_date">
+  <input id ="transaction-date" type="date" name="transaction_date">
   <label for="merchant-id">Merchant:</label>
   <select id="merchant-id" name="merchant_id">
     <% @merchants.each do |merchant| %>

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/structure.css">
     <link rel="stylesheet" href="/styles/tables.css">
+    <link rel="stylesheet" href="/styles/forms.css">
   </head>
   <body>
     <header>
@@ -13,10 +14,10 @@
     </header>
     <nav>
       <ul>
-        <li><a href="/transactions">View all Transactions</a></li>
-        <li><a href="/transactions/new">Add New Transaction</a></li>
-        <li><a href="/categories">Display Categories</a></li>
-        <li><a href="/merchants">Edit Merchants</a></li>
+        <a href="/transactions"><li>View all Transactions</li></a>
+        <a href="/transactions/new"><li>Add New Transaction</li></a>
+        <a href="/categories"><li>Display Categories</li></a>
+        <a href="/merchants"><li>Edit Merchants</li></a>
       </ul>
     </nav>
     <%= yield %>
