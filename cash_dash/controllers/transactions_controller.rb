@@ -29,15 +29,6 @@ get '/transactions/:id/edit' do
   erb( :"transactions/edit")
 end
 
-get '/transactions/:month/:year' do
-  @transactions = Transaction.return_transactions_by_month( params['month'], params['year'])
-  @months = Month.all()
-  @years = Transaction.return_years()
-  total = Transaction.total_spent_month( params['month'], params['year'])
-  @pretty_total = Transaction.display_pounds_pence(total)
-  erb( :"/transactions/index")
-end
-
 post '/transactions' do
   params['amount'] = (params['amount'].to_f*100).to_i
   transaction = Transaction.new(params)
@@ -52,7 +43,12 @@ post '/transactions/:id/delete' do
 end
 
 post '/transactions/month-year' do
-  redirect to ("/transactions/#{params['month']}/#{params['year']}")
+  @transactions = Transaction.return_transactions_by_month( params['month'], params['year'])
+  @months = Month.all()
+  @years = Transaction.return_years()
+  total = Transaction.total_spent_month( params['month'], params['year'])
+  @pretty_total = Transaction.display_pounds_pence(total)
+  erb( :"/transactions/index")
 end
 
 post '/transactions/:id' do
