@@ -29,6 +29,20 @@ category4 = Category.new({
 })
 category4.save()
 
+category5 = Category.new({
+  "name" => "transport"
+})
+category5.save()
+
+category6 = Category.new({
+  "name" => "holidays"
+})
+category6.save()
+
+category7 = Category.new({
+  "name" => "general"
+})
+category7.save()
 
 merchant1 = Merchant.new({
   "name" => "peppers"
