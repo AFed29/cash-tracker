@@ -48,6 +48,8 @@ post '/transactions/month-year' do
   @years = Transaction.return_years()
   total = Transaction.total_spent_month( params['month'], params['year'])
   @pretty_total = Transaction.display_pounds_pence(total)
+  @month = params['month'].to_i
+  @year = params['year']
   erb( :"/transactions/index")
 end
 

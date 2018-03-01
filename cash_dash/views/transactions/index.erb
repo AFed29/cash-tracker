@@ -3,12 +3,12 @@
     <select name="month">
       <% count = 0 %>
       <% @months.each do |month| %>
-      <option value="<%= count += 1 %>"><%= month %></option>
+      <option <%= "selected" if @month == count += 1 %> value="<%= count %>"><%= month %></option>
       <% end %>
     </select>
     <select name="year">
       <% @years.each do |year| %>
-      <option value="<%= year %>"><%= year %></option>
+      <option <%= "selected" if @year == year %> value="<%= year %>"><%= year %></option>
       <% end %>
     </select>
     <input type="submit" value="Filter by month/year">
