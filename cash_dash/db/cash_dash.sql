@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS budget;
 DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS merchants;
 DROP TABLE IF EXISTS categories;
@@ -18,4 +19,9 @@ CREATE TABLE transactions (
   amount INT4 NOT NULL,
   category_id INT4 REFERENCES categories(id),
   merchant_id INT4 REFERENCES merchants(id)
-)
+);
+
+CREATE TABLE budget (
+  id SERIAL4 PRIMARY KEY,
+  amount INT4 NOT NULL
+);

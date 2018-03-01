@@ -4,10 +4,62 @@
   justify-content: center;
 }
 
-form.new-transaction {
+.form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 25vw;
+  margin: auto;
+}
+
+big {
+  width: 40vw;
+}
+
+.wrapper {
+  list-style-type: none;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+}
+
+.new-transaction-row {
+  display: flex;
+  flex-direction: row;
   font-size: 1.25rem;
   margin-top: 0.5em;
-  justify-content: center;
+  justify-content: flex-end;
+}
+
+.budget-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 1rem;
+}
+
+.new-transaction-row label {
+  flex: 1;
+}
+
+.new-transaction-row input,
+.new-transaction-row select{
+  flex: 2;
+}
+
+.budget-row label {
+  flex: 1.5;
+  flex-wrap: nowrap;
+}
+
+.budget-row input {
+  flex: 1;
+}
+
+.button {
+  display: block;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
 }

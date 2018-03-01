@@ -3,12 +3,6 @@ body {
   color: #f4f4f4;
 }
 
-section.form-container {
-  display: block;
-  width: 15vw;
-  margin: auto;
-}
-
 header {
   display: flex;
   justify-content: flex-start;
@@ -61,6 +55,10 @@ h2.error {
   margin-top: 1em;
 }
 
+h3 {
+  text-align: right;
+}
+
 img {
   margin: 1em;
 }
@@ -68,17 +66,17 @@ img {
 footer {
   display: flex;
   justify-content: flex-end;
-  flex-shrink: 0;
-  padding-right: 5.5em;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding-right: 5.4em;
   font-size: 1.5rem;
 }
 
 footer.merchant {
+  width: 15vw;
+  display: flex;
+  justify-content: center;
   font-size: 1em;
-  padding-right: 24em;
-}
-
-.button {
-  width: 75%;
   margin: auto;
+  padding-right: 0;
 }

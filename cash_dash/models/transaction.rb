@@ -40,9 +40,9 @@ class Transaction
             merchant_id
           ) =
           (
-            $1, $2, $3
+            $1, $2, $3, $4
           )
-          WHERE id = $4;"
+          WHERE id = $5;"
     values = [@transaction_date, @amount, @category_id, @merchant_id, @id]
     SqlRunner.run( sql, values )
   end
@@ -97,13 +97,6 @@ class Transaction
     return Transaction.new(transaction_hash)
   end
 
-  def self.display_pounds_pence( amount )
-    pounds = amount/100
-    pence = amount - (pounds*100)
-    pence = pence.to_s.rjust(2, "0")
-    return "£#{pounds}.#{pence}"
-  end
-
   def self.return_years()
     sql = "SELECT DISTINCT
            date_part('year', transaction_date) AS years
@@ -119,7 +112,9 @@ class Transaction
            AND date_part('year', transaction_date) = $2;"
     values = [month, year]
     transaction_hash = SqlRunner.run( sql, values )
-    return transaction_hash.map { |transaction_hash| Transaction.new(transaction_hash) }
+    return transaction_hash.map do
+      |transaction_hash| Transaction.new(transaction_hash)
+    end
   end
 
   def self.total_spent_month(month, year)

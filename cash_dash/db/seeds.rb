@@ -1,11 +1,13 @@
 require_relative('../models/category.rb')
 require_relative('../models/merchant.rb')
 require_relative('../models/transaction.rb')
+require_relative('../models/budget.rb')
 require('pry-byebug')
 
 Transaction.delete_all()
 Merchant.delete_all()
 Category.delete_all()
+Budget.delete_all()
 
 category1 = Category.new({
   "name" => "groceries"
@@ -61,6 +63,11 @@ transaction3 = Transaction.new({
   "category_id" => category1.id()
 })
 transaction3.save()
+
+budget = Budget.new({
+  'amount' => 150000
+  })
+budget.save()
 
   binding.pry
 

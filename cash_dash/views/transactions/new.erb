@@ -1,21 +1,29 @@
-<section class="form-container">
-  <form class="new-transaction" method="post" action="/transactions">
+  <form class="form-container" method="post" action="/transactions">
+    <ul class="wrapper">
+    <li class="new-transaction-row">
       <label for="transaction-date">Date of transaction:</label>
       <input class="form-input" id ="transaction-date" type="date" name="transaction_date">
+    </li>
+    <li class="new-transaction-row">
       <label for="merchant-id">Merchant:</label>
       <select class="form-input" id="merchant-id" name="merchant_id">
-        <% @merchants.each do |merchant| %>
+      <% @merchants.each do |merchant| %>
         <option value="<%= merchant.id %>"><%= merchant.name %></option>
-        <% end %>
+      <% end %>
       </select>
+    </li>
+    <li class="new-transaction-row">
       <label for="category-id">Category:</label>
       <select class="form-input" id="category-id" name="category_id">
-        <% @categories.each do |category| %>
+      <% @categories.each do |category| %>
         <option value="<%= category.id %>"><%= category.name %></option>
-        <% end %>
+      <% end %>
       </select>
+    </li>
+    <li class="new-transaction-row">
       <label for="amount">Amount: £</label>
       <input class="form-input" id="amount" type="number" name="amount" step="0.01">
+    </li>
     <input class="button" type="submit" value="Add this Transaction">
+  </ul>
   </form>
-</section>

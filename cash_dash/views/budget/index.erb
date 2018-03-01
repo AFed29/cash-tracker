@@ -1,0 +1,10 @@
+<form class="form-container" method="post" action="/budget/<%= @id %>">
+  <ul class="wrapper">
+  <input hidden type="number" name="id" value="<%= @id %>">
+  <li class="budget-row">
+  <label for="budget">Update your monthly budget: £</label>
+  <input id="budget" type="number" name="amount" value="<%= @budget %>">
+</li>
+  <input class="button" type="submit" value="Update your budget">
+</ul>
+</form>

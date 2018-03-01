@@ -30,7 +30,7 @@
         <td><%= transaction.pretty_date() %></td>
         <td><%= transaction.merchant().name %></td>
         <td><%= transaction.category().name %></td>
-        <td><%= Transaction.display_pounds_pence(transaction.amount.to_i) %></td>
+        <td><%= Utilities.display_pounds_pence(transaction.amount.to_i) %></td>
         <td class="edit-delete">
           <a href="/transactions/<%= transaction.id %>/edit">Edit Transaction</a>
         </td>

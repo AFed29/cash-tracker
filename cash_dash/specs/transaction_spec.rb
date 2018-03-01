@@ -11,8 +11,5 @@ class TestTransaction < MiniTest::Test
     assert_equal( 550, @transaction1.amount() )
   end
 
-  def test_pretty_display_total()
-    result = Transaction.display_pounds_pence(6273)
-    assert_equal("£62.73", result)
-  end
+
 end
