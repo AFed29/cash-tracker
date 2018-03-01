@@ -13,6 +13,8 @@ get '/transactions' do
   @years = Transaction.return_years()
   @month = Date.today.month
   @year = Date.today.year.to_s
+  budget = ( Transaction.number_of_months_spending() * 150000 ) - total
+  @budget = Transaction.display_pounds_pence(budget)
   erb( :"transactions/index" )
 end
 
@@ -52,6 +54,7 @@ post '/transactions/month-year' do
   @pretty_total = Transaction.display_pounds_pence(total)
   @month = params['month'].to_i
   @year = params['year']
+  @budget = Transaction.display_pounds_pence( 150000 - total )
   erb( :"/transactions/index")
 end
 

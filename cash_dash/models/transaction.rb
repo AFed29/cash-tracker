@@ -106,10 +106,10 @@ class Transaction
 
   def self.return_years()
     sql = "SELECT DISTINCT
-           date_part('year', transaction_date)
+           date_part('year', transaction_date) AS years
            FROM transactions;"
     years_hash = SqlRunner.run( sql )
-    years = years_hash.map { |year_hash| year_hash['date_part'] }
+    years = years_hash.map { |year_hash| year_hash['years'] }
     return years
   end
 
@@ -137,5 +137,14 @@ class Transaction
            FROM transactions;"
     total = SqlRunner.run( sql ).first()['sum']
     return total.to_i
+  end
+
+  def self.number_of_months_spending()
+    sql = "SELECT DISTINCT
+           date_part('year', transaction_date) AS years,
+           date_part('month', transaction_date) AS months
+           FROM transactions;"
+    months_years_hash = SqlRunner.run( sql )
+    return months_years_hash.count
   end
 end
