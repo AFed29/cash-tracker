@@ -80,3 +80,7 @@ footer.merchant {
   margin: auto;
   padding-right: 0;
 }
+
+.edit-delete:hover {
+  color: #aa0367;
+}
