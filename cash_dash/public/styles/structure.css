@@ -3,8 +3,10 @@ body {
   color: #f4f4f4;
 }
 
-section {
- flex: 1 0 auto;
+section.form-container {
+  display: block;
+  width: 15vw;
+  margin: auto;
 }
 
 header {
@@ -74,4 +76,9 @@ footer {
 footer.merchant {
   font-size: 1em;
   padding-right: 24em;
+}
+
+.button {
+  width: 75%;
+  margin: auto;
 }
