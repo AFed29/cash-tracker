@@ -11,6 +11,8 @@ get '/transactions' do
   @pretty_total = Transaction.display_pounds_pence(total)
   @months = Month.all()
   @years = Transaction.return_years()
+  @month = Date.today.month
+  @year = Date.today.year.to_s
   erb( :"transactions/index" )
 end
 
