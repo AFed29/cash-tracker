@@ -26,6 +26,10 @@ nav li:hover {
   background-color: #f4f4f4;
   color: #aa0367;
   text-decoration: underline;
+  transition-property: all;
+  transition-timing-function: ease-in;
+  transition-delay: 0.2s;
+  transition-duration: 0.2s;
 }
 
 a {
